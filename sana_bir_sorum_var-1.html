@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana Bir Sorum Var ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow:hidden;display:grid;place-items:center;
+font-family:Arial,Helvetica,sans-serif;color:#fff;
+background:radial-gradient(ellipse at 50% 45%,#3b0710 0%,#160308 42%,#050505 100%)}
+.card{position:relative;z-index:2;width:min(90%,520px);padding:42px 25px;text-align:center;
+border:1px solid rgba(255,55,75,.45);border-radius:24px;
+background:rgba(12,8,10,.82);box-shadow:0 0 45px rgba(220,0,35,.18),inset 0 0 30px rgba(150,0,20,.08)}
+.heart{font-size:48px;filter:drop-shadow(0 0 14px #f22);animation:pulse 1.5s infinite}
+h1{font-size:clamp(27px,7vw,42px);margin:18px 0 12px;color:#ff334d;text-shadow:0 0 18px #a00}
+p{color:#e5dadd;line-height:1.6;font-size:17px}
+.buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
+button{border:0;border-radius:12px;padding:14px 27px;font-size:16px;font-weight:700;cursor:pointer;transition:.2s}
+#yes{background:linear-gradient(135deg,#ff334d,#a90020);color:white;box-shadow:0 0 20px #a9002066}
+#no{background:#242124;color:#eee;border:1px solid #777}
+button:hover{transform:translateY(-3px) scale(1.04)}
+#result{display:none;margin-top:24px;color:#ff8b9b;font-size:20px;font-weight:bold}
+.heart-float{position:absolute;bottom:-40px;color:#d71938;opacity:.6;animation:rise linear infinite;pointer-events:none}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.small{font-size:12px;color:#8e777c;margin-top:24px}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="heart">❤️</div>
+  <h1>Sana Bir Sorum Var...</h1>
+  <p>Kalbimde senin için özel bir yer var.<br>Benimle çıkar mısın?</p>
+  <div class="buttons">
+    <button id="yes">EVET ❤️</button>
+    <button id="no">HAYIR 🙈</button>
+  </div>
+  <div id="result">Beni dünyanın en mutlu insanı yaptın! ❤️✨</div>
+  <div class="small">Sadece sana özel hazırlandı 🖤</div>
+</main>
+<script>
+const yes=document.getElementById('yes');
+const no=document.getElementById('no');
+const result=document.getElementById('result');
+yes.addEventListener('click',()=>{
+  result.style.display='block';
+  document.querySelector('h1').textContent='Bu Harika! ❤️';
+  document.querySelector('p').textContent='Güzel bir başlangıç olsun. ✨';
+  yes.textContent='❤️';
+  no.style.display='none';
+  for(let i=0;i<28;i++){
+    const s=document.createElement('span');s.textContent=['❤️','💖','✨'][i%3];
+    s.className='heart-float';s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(3+Math.random()*4)+'s';s.style.fontSize=(18+Math.random()*20)+'px';
+    document.body.appendChild(s);setTimeout(()=>s.remove(),7500);
+  }
+});
+no.addEventListener('click',()=>{
+  no.textContent='Bir daha düşünür müsün? 🥺';
+});
+function floatHeart(){
+ const s=document.createElement('span');s.className='heart-float';s.textContent='♥';
+ s.style.left=Math.random()*100+'vw';s.style.animationDuration=(6+Math.random()*7)+'s';
+ s.style.fontSize=(12+Math.random()*18)+'px';document.body.appendChild(s);
+ setTimeout(()=>s.remove(),14000);
+}
+setInterval(floatHeart,650);
+</script>
+</body>
+</html>
